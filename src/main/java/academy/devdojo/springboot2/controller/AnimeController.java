@@ -18,7 +18,7 @@ public class AnimeController {
 
     private final DateUtil dateUtil;
 
-    @GetMapping(path = "list")
+    @GetMapping
     public List<Anime> findAll() {
         return List.of(new Anime("Boku No Hero"), new Anime("Berserk"));
     }
