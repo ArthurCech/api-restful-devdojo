@@ -8,6 +8,7 @@ import academy.devdojo.springboot2.requests.AnimePostRequestBody;
 import academy.devdojo.springboot2.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,14 +31,17 @@ public class AnimeService {
         return animeRepository.findByName(name);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Anime save(AnimePostRequestBody animePostRequestBody) {
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void delete(long id) {
         animeRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void replace(AnimePutRequestBody animePutRequestBody) {
         findByIdOrThrowBadRequestException(animePutRequestBody.getId());
         Anime anime = AnimeMapper.INSTANCE.toAnime(animePutRequestBody);
