@@ -20,7 +20,7 @@ public class AnimeService {
 
     private final AnimeRepository animeRepository;
 
-    public List<Anime> findAll() {
+    public List<Anime> findAllNonPaginated() {
         return animeRepository.findAll();
     }
 
