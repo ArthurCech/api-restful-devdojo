@@ -28,7 +28,7 @@ public class AnimeController {
         return ResponseEntity.ok(animeService.findAllNonPaginated());
     }
 
-    @GetMapping("paginated")
+    @GetMapping("/paginated")
     public ResponseEntity<Page<Anime>> findAllPaginated(Pageable pageable) {
         return ResponseEntity.ok(animeService.findAllPaginated(pageable));
     }
