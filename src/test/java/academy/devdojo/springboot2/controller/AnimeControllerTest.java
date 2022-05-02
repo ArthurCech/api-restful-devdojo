@@ -59,7 +59,7 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findAllPaginated returns list of anime inside page object when successful")
+    @DisplayName("findAllPaginated returns a list of anime inside page object when successful")
     void findAllPaginated_ReturnsListOfAnimeInsidePageObject_WhenSuccessful() {
         String expectedName = AnimeCreator.createValidAnime().getName();
         Page<Anime> animePage = animeController.findAllPaginated(null).getBody();
@@ -72,7 +72,7 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findAllNonPaginated returns list of anime when successful")
+    @DisplayName("findAllNonPaginated returns a list of anime when successful")
     void findAll_ReturnsListOfAnime_WhenSuccessful() {
         String expectedName = AnimeCreator.createValidAnime().getName();
         List<Anime> animes = animeController.findAllNonPaginated().getBody();
@@ -97,7 +97,7 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findByName returns list of anime when successful")
+    @DisplayName("findByName returns a list of anime when successful")
     void findByName_ReturnsListOfAnime_WhenSuccessful() {
         String expectedName = AnimeCreator.createValidAnime().getName();
         List<Anime> animes = animeController.findByName("random").getBody();
@@ -110,7 +110,7 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findByName returns empty list of anime when anime is not found")
+    @DisplayName("findByName returns an empty list of anime when anime is not found")
     void findByName_ReturnsEmptyListOfAnime_WhenAnimeIsNotFound() {
         BDDMockito.when(animeServiceMock.findByName(ArgumentMatchers.anyString()))
                 .thenReturn(Collections.emptyList());
