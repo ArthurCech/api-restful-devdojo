@@ -4,7 +4,6 @@ import academy.devdojo.springboot2.exception.BadRequestException;
 import academy.devdojo.springboot2.exception.BadRequestExceptionDetails;
 import academy.devdojo.springboot2.exception.ExceptionDetails;
 import academy.devdojo.springboot2.exception.ValidationExceptionDetails;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
-@Log4j2
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(BadRequestException.class)

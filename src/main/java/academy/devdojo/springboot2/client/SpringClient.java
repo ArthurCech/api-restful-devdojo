@@ -3,12 +3,11 @@ package academy.devdojo.springboot2.client;
 import academy.devdojo.springboot2.domain.Anime;
 import academy.devdojo.springboot2.requests.AnimePostRequestBody;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Log4j2
 public class SpringClient {
@@ -22,17 +21,17 @@ public class SpringClient {
 //        Anime[] animes = new RestTemplate().getForObject("http://localhost:8080/animes", Anime[].class);
 //        log.info(Arrays.toString(animes));
 
-//        ResponseEntity<List<Anime>> exchange = new RestTemplate().exchange(
-//                "http://localhost:8080/animes",
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<List<Anime>>() {
-//                });
-//        log.info(exchange.getBody());
+        ResponseEntity<List<Anime>> exchange = new RestTemplate().exchange(
+                "http://localhost:8080/animes",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Anime>>() {
+                });
+        log.info(exchange.getBody());
 
-//        AnimePostRequestBody kingdom = AnimePostRequestBody.builder().name("Kingdom").build();
-//        Anime kingdomSaved = new RestTemplate().postForObject("http://localhost:8080/animes", kingdom, Anime.class);
-//        log.info("saved anime {}", kingdomSaved);
+        AnimePostRequestBody kingdom = AnimePostRequestBody.builder().name("Kingdom").build();
+        Anime kingdomSaved = new RestTemplate().postForObject("http://localhost:8080/animes", kingdom, Anime.class);
+        log.info("saved anime {}", kingdomSaved);
 
         AnimePostRequestBody samuraiChamploo = AnimePostRequestBody.builder().name("Samurai Champloo").build();
         ResponseEntity<Anime> samuraiChamplooSaved = new RestTemplate().exchange(
@@ -50,7 +49,6 @@ public class SpringClient {
                 HttpMethod.PUT,
                 new HttpEntity<>(animeToBeUpdated, createJsonHeader()),
                 Void.class);
-
         log.info(samuraiChamplooUpdated);
 
         ResponseEntity<Void> samuraiChamplooDeleted = new RestTemplate().exchange(
@@ -59,7 +57,6 @@ public class SpringClient {
                 null,
                 Void.class,
                 animeToBeUpdated.getId());
-
         log.info(samuraiChamplooDeleted);
     }
 

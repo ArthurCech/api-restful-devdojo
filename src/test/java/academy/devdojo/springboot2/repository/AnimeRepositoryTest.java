@@ -55,7 +55,7 @@ class AnimeRepositoryTest {
     }
 
     @Test
-    @DisplayName("findByName returns a list of anime when successful")
+    @DisplayName("findByName returns list of anime when successful")
     void findByName_ReturnsListOfAnime_WhenSuccesful() {
         Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
@@ -68,7 +68,7 @@ class AnimeRepositoryTest {
     }
 
     @Test
-    @DisplayName("findByName returns an empty list of anime when anime is not found")
+    @DisplayName("findByName returns empty list of anime when anime is not found")
     void findByName_ReturnsEmptyList_WhenAnimeIsNotFound() {
         List<Anime> animes = animeRepository.findByName("random");
 

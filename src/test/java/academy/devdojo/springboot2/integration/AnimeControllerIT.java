@@ -39,7 +39,7 @@ public class AnimeControllerIT {
     private int port;
 
     @Test
-    @DisplayName("findAllPaginated returns a list of anime inside page object when successful")
+    @DisplayName("findAllPaginated returns list of anime inside page object when successful")
     void findAllPaginated_ReturnsListOfAnimeInsidePageObject_WhenSuccessful() {
         Anime savedAnime = animeRepository.save(AnimeCreator.createAnimeToBeSaved());
         String expectedName = savedAnime.getName();
@@ -59,7 +59,7 @@ public class AnimeControllerIT {
     }
 
     @Test
-    @DisplayName("findAllNonPaginated returns a list of anime when successful")
+    @DisplayName("findAllNonPaginated returns list of anime when successful")
     void findAllNonPaginated_ReturnsListOfAnime_WhenSuccessful() {
         Anime savedAnime = animeRepository.save(AnimeCreator.createAnimeToBeSaved());
         String expectedName = savedAnime.getName();
@@ -92,7 +92,7 @@ public class AnimeControllerIT {
     }
 
     @Test
-    @DisplayName("findByName returns a list of anime when successful")
+    @DisplayName("findByName returns list of anime when successful")
     void findByName_ReturnsListOfAnime_WhenSuccessful() {
         Anime savedAnime = animeRepository.save(AnimeCreator.createAnimeToBeSaved());
         String expectedName = savedAnime.getName();
@@ -113,7 +113,7 @@ public class AnimeControllerIT {
     }
 
     @Test
-    @DisplayName("findByName returns an empty list of anime when anime is not found")
+    @DisplayName("findByName returns empty list of anime when anime is not found")
     void findByName_ReturnsEmptyListOfAnime_WhenAnimeIsNotFound() {
         List<Anime> animes = testRestTemplate.exchange(
                 "/animes/find?name=random",
