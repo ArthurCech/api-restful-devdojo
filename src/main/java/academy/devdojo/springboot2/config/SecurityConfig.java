@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 @Log4j2
+@SuppressWarnings("java:S5344")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DevDojoUserDetailsService devDojoUserDetailsService;
@@ -34,6 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/api/v1/animes/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/v1/animes/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
