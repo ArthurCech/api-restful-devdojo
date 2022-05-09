@@ -34,7 +34,7 @@ services:
     mem_limit: 128m
 
   springboot2-essentials:
-    image: registry.hub.docker.com/arthurcech/springboot2-essentials:0.0.1-SNAPSHOT
+    image: arthurcech/springboot2-essentials:0.0.1-SNAPSHOT
     ports:
       - "8080:8080"
     environment:
