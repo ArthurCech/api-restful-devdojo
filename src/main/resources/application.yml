@@ -5,3 +5,15 @@ server:
 spring:
   profiles:
     active: dev
+
+info:
+  app: Spring Boot 2 Essentials By DevDojo
+  website: https://devdojo.academy
+  github: https://github.com/devdojobr/springboot2-essentials
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env"
