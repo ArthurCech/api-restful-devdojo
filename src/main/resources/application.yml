@@ -3,6 +3,8 @@ server:
     include-stacktrace: on_param
 
 spring:
+  application:
+    name: springboot2-essentials # utilizado no grafana
   profiles:
     active: dev
 
